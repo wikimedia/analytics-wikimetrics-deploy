@@ -1,0 +1,18 @@
+BROKER_URL                          : redis://localhost:6379/0
+CELERY_RESULT_BACKEND               : redis://localhost:6379/0
+CELERY_TASK_RESULT_EXPIRES          : 2592000
+CELERY_DISABLE_RATE_LIMITS          : True
+CELERY_STORE_ERRORS_EVEN_IF_IGNORED : True
+CELERYD_CONCURRENCY                 : 24
+CELERYD_TASK_TIME_LIMIT             : 3630
+CELERYD_TASK_SOFT_TIME_LIMIT        : 3600
+DEBUG                               : False
+LOG_LEVEL                           : INFO
+MAX_INSTANCES_PER_RECURRENT_REPORT  : 365
+CELERY_BEAT_DATAFILE                : /var/run/wikimetrics/celerybeat_scheduled_tasks
+CELERY_BEAT_PIDFILE                 : /var/run/wikimetrics/celerybeat.pid
+CELERYBEAT_SCHEDULE                 :
+    'update-daily-recurring-reports':
+        'task'      : 'wikimetrics.schedules.daily.recurring_reports'
+        # The schedule can be set to 'daily' for a crontab-like daily recurrence
+        'schedule'  : daily

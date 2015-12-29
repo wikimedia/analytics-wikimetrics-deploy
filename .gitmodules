@@ -1,0 +1,3 @@
+[submodule "secrets/private"]
+	path = secrets/private
+	url = ssh://gerrit.wikimedia.org:29418/secrets/wikimetrics

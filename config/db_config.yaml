@@ -1,0 +1,18 @@
+DB_USER_WIKIMETRICS             : $DB_USER_WIKIMETRICS
+DB_PASSWORD_WIKIMETRICS         : $DB_PASSWORD_WIKIMETRICS
+DB_NAME_WIKIMETRICS             : $DB_NAME_WIKIMETRICS
+DB_HOST_WIKIMETRICS             : $DB_HOST_WIKIMETRICS
+DB_NAMES_TESTING                : ['wikimetrics_testing', 'wiki_testing', 'wiki2_testing', 'centralauth_testing']
+DB_USER_LABSDB                  : $DB_USER_LABSDB
+DB_PASSWORD_LABSDB              : $DB_PASSWORD_LABSDB
+SQL_ECHO                        : False
+WIKIMETRICS_ENGINE_URL          : 'mysql://$DB_USER_WIKIMETRICS:$DB_PASSWORD_WIKIMETRICS@$DB_HOST_WIKIMETRICS/$DB_NAME_WIKIMETRICS'
+WIKIMETRICS_POOL_SIZE           : 100
+MEDIAWIKI_ENGINE_URL_TEMPLATE   : 'mysql://$DB_USER_LABSDB:$DB_PASSWORD_LABSDB@labsdb1001.eqiad.wmnet/{0}_p'
+MEDIAWIKI_POOL_SIZE             : 200
+CENTRALAUTH_ENGINE_URL          : 'mysql://$DB_USER_LABSDB:$DB_PASSWORD_LABSDB@labsdb1001.eqiad.wmnet/centralauth_p'
+REPLICATION_LAG_MW_PROJECTS     : [ 'enwiki', 'eowiki', 'elwiki', 'commonswiki', 'dewiki', 'frwiki', 'eswiki' ]
+REPLICATION_LAG_THRESHOLD       : 3 # (measured in hours)
+DEBUG                           : False
+REVISION_TABLENAME              : revision_userindex
+ARCHIVE_TABLENAME               : archive_userindex

@@ -1,0 +1,30 @@
+SECRET_KEY  : $SECRET_KEY
+DEBUG       : False
+
+GOOGLE_CLIENT_SECRET                : 'i1T3NJl3NKNu-BnEWQB4QAF6'
+GOOGLE_BASE_URL                     : 'https://www.google.com/accounts/'
+GOOGLE_AUTH_URI                     : 'https://accounts.google.com/o/oauth2/auth'
+GOOGLE_TOKEN_URI                    : 'https://accounts.google.com/o/oauth2/token'
+GOOGLE_CLIENT_EMAIL                 : $GOOGLE_CLIENT_EMAIL
+GOOGLE_CLIENT_ID                    : $GOOGLE_CLIENT_ID
+GOOGLE_AUTH_PROVIDER_X509_CERT_URL  : 'https://www.googleapis.com/oauth2/v1/certs'
+GOOGLE_AUTH_SCOPE                   : 'https://www.googleapis.com/auth/userinfo.email'
+GOOGLE_USERINFO_URI                 : 'https://www.googleapis.com/oauth2/v1/userinfo'
+GOOGLE_REDIRECT_URI                 : 'https://metrics.wmflabs.org/auth/google'
+GOOGLE_JAVASCRIPT_ORIGIN            : 'https://metrics.wmflabs.org'
+
+META_MW_BASE_URL                    : 'https://meta.wikimedia.org/'
+META_MW_BASE_INDEX                  : 'w/index.php'
+META_MW_TOKEN_URI                   : 'w/index.php?title=Special:OAuth/token'
+META_MW_AUTH_URI                    : 'wiki/Special:OAuth/authorize'
+META_MW_USERINFO_URI                : 'w/api.php?action=query&meta=userinfo&format=json'
+META_MW_IDENTIFY_URI                : 'w/index.php?title=Special:OAuth/identify&format=json'
+META_MW_REDIRECT_URI                : 'https://metrics.wmflabs.org/auth/meta_mw'
+META_MW_CONSUMER_KEY                : $META_MW_CONSUMER_KEY
+META_MW_CLIENT_SECRET               : $META_MW_CLIENT_SECRET
+
+SERVER_HOST                         : '0.0.0.0'
+SERVER_PORT                         : 80
+
+PUBLIC_PATH                         : /srv/var/wikimetrics/public
+test: test
