@@ -29,7 +29,7 @@ STAGES = {
 SOURCE_DIR = '/srv/wikimetrics/src'
 CONFIG_DIR = '/srv/wikimetrics/config'
 VENV_DIR = '/srv/wikimetrics/venv'
-LOCAL_CONFIG_DIR = 'config'
+LOCAL_CONFIG_DIR = 'config_templates'
 
 DB_CONFIG_FILE = 'db_config.yaml'
 QUEUE_CONFIG_FILE = 'queue_config.yaml'
@@ -154,6 +154,9 @@ def deploy():
     # Updates the virtualenv with new wikimetrics code
     upgrade_wikimetrics()
 
+    # Uploads the db and oauth creds to the server
+    upload_config()
+
     # Update DB
     update_db()
 
@@ -216,6 +219,7 @@ def upgrade_wikimetrics():
             os.path.join(CONFIG_DIR, 'requirements.txt'))
 
 
+@ensure_stage
 def create_db_and_user(db_name, db_config):
     """
     Creates the database db_name and grants access to the
@@ -224,11 +228,20 @@ def create_db_and_user(db_name, db_config):
     db_user = db_config['DB_USER_WIKIMETRICS']
     db_password = db_config['DB_PASSWORD_WIKIMETRICS']
     db_host = db_config['DB_HOST_WIKIMETRICS']
-    run("mysql -u root -h {0} -e ".format(db_host) +
-        "'CREATE DATABASE IF NOT EXISTS {1}'".format(db_host, db_name))
-    run("mysql -u root -h {0} -e ".format(db_host) +
-        "'GRANT ALL ON `{0}`.* TO \"{1}\"@\"{2}\" identified by \"{3}\";'"
-        .format(db_name, db_user, db_host, db_password))
+    # Because we are using labsdb on prod, this is a special case where we
+    # cannot create database as the root user, and the wikimetrics user is
+    # actually the same as the labsdb user - so we don't create it
+    if env.stage == 'production':
+        run("mysql -u {0} -p{1} -h {2} -e "
+            .format(db_user, db_password, db_host) +
+            "'CREATE DATABASE IF NOT EXISTS {0}'"
+            .format(db_name))
+    else:
+        run("mysql -u root -h {0} -e ".format(db_host) +
+            "'CREATE DATABASE IF NOT EXISTS {0}'".format(db_name))
+        run("mysql -u root -h {0} -e ".format(db_host) +
+            "'GRANT ALL ON `{0}`.* TO \"{1}\"@\"{2}\" identified by \"{3}\";'"
+            .format(db_name, db_user, db_host, db_password))
 
 
 @ensure_stage

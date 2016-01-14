@@ -9,8 +9,8 @@ CELERYD_TASK_SOFT_TIME_LIMIT        : 3600
 DEBUG                               : False
 LOG_LEVEL                           : INFO
 MAX_INSTANCES_PER_RECURRENT_REPORT  : 365
-CELERY_BEAT_DATAFILE                : /var/run/wikimetrics/celerybeat_scheduled_tasks
-CELERY_BEAT_PIDFILE                 : /var/run/wikimetrics/celerybeat.pid
+CELERY_BEAT_DATAFILE                : /srv/wikimetrics/celerybeat_scheduled_tasks
+CELERY_BEAT_PIDFILE                 : /srv/wikimetrics/celerybeat.pid
 CELERYBEAT_SCHEDULE                 :
     'update-daily-recurring-reports':
         'task'      : 'wikimetrics.schedules.daily.recurring_reports'
