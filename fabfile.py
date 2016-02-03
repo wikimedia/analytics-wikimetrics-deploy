@@ -279,6 +279,7 @@ def restart_wikimetrics():
     Restarts the wikimetrics queue, scheduler and web server
     """
     print 'Restarting queue, scheduler and web server'
+
     sudo('service uwsgi-wikimetrics-web restart')
     sudo('service wikimetrics-queue restart')
     sudo('service wikimetrics-scheduler restart')

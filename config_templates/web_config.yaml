@@ -11,7 +11,7 @@ GOOGLE_AUTH_PROVIDER_X509_CERT_URL  : 'https://www.googleapis.com/oauth2/v1/cert
 GOOGLE_AUTH_SCOPE                   : 'https://www.googleapis.com/auth/userinfo.email'
 GOOGLE_USERINFO_URI                 : 'https://www.googleapis.com/oauth2/v1/userinfo'
 GOOGLE_REDIRECT_URI                 : $GOOGLE_REDIRECT_URI
-GOOGLE_JAVASCRIPT_ORIGIN            : 'https://metrics.wmflabs.org'
+GOOGLE_JAVASCRIPT_ORIGIN            : $GOOGLE_JAVASCRIPT_ORIGIN
 
 META_MW_BASE_URL                    : 'https://meta.wikimedia.org/'
 META_MW_BASE_INDEX                  : 'w/index.php'
@@ -19,7 +19,7 @@ META_MW_TOKEN_URI                   : 'w/index.php?title=Special:OAuth/token'
 META_MW_AUTH_URI                    : 'wiki/Special:OAuth/authorize'
 META_MW_USERINFO_URI                : 'w/api.php?action=query&meta=userinfo&format=json'
 META_MW_IDENTIFY_URI                : 'w/index.php?title=Special:OAuth/identify&format=json'
-META_MW_REDIRECT_URI                : $MEDIAWIKI_REDIRECT_URI
+META_MW_REDIRECT_URI                : $META_MW_REDIRECT_URI
 META_MW_CONSUMER_KEY                : $META_MW_CONSUMER_KEY
 META_MW_CLIENT_SECRET               : $META_MW_CLIENT_SECRET
 
