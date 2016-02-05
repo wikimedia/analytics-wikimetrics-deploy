@@ -280,6 +280,8 @@ def restart_wikimetrics():
     """
     print 'Restarting queue, scheduler and web server'
 
-    sudo('service uwsgi-wikimetrics-web restart')
+    # Doing uwsgi stop and start due to a known bug in our uwsgi puppet module
+    sudo('service uwsgi-wikimetrics-web stop')
+    sudo('service uwsgi-wikimetrics-web start')
     sudo('service wikimetrics-queue restart')
     sudo('service wikimetrics-scheduler restart')
